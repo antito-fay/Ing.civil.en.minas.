@@ -13,3 +13,65 @@
   <script src="script.js"></script>
 </body>
 </html>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #5e2c82;
+}
+
+#malla-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.ramo {
+  background-color: #d6b3f5; /* Morado claro */
+  border: 2px solid #a874d8;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+  color: #3d2165;
+}
+
+.ramo.aprobado {
+  background-color: #f9d3e3; /* Rosa pastel */
+  border-color: #f7b6d2;
+  color: #7c2a4d;
+}
+const ramos = [
+  { nombre: "Matemáticas I", semestre: 1 },
+  { nombre: "Química General", semestre: 1 },
+  { nombre: "Física I", semestre: 1 },
+  { nombre: "Comunicación", semestre: 1 },
+  { nombre: "Intro a la Ingeniería", semestre: 1 },
+  { nombre: "Matemáticas II", semestre: 2 },
+  { nombre: "Física II", semestre: 2 },
+  { nombre: "Mineralogía", semestre: 2 },
+  { nombre: "Computación", semestre: 2 },
+  { nombre: "Inglés I", semestre: 2 },
+  // Agrega más ramos según tu malla completa
+];
+
+const container = document.getElementById("malla-container");
+
+ramos.forEach(ramo => {
+  const div = document.createElement("div");
+  div.classList.add("ramo");
+  div.textContent = ramo.nombre;
+
+  div.addEventListener("click", () => {
+    div.classList.toggle("aprobado");
+  });
+
+  container.appendChild(div);
+});
